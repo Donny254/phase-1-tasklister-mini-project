@@ -6,13 +6,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
   event.preventDefault();
 
 
-  const input = document.querySelector('#new-task-description')
+  const input = document.querySelector('#new-task-description');
   const task = input.value.trim();
 
 
   if (task !== '') {
-
-    buildToDoList();
+    buildToDoList(task);
     input.value = '';
   }
 });
@@ -20,6 +19,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 function buildToDoList(task) {
   const li = document.createElement('li');
-  li.textContent = li;
+  li.textContent = task;
   taskList.appendChild(li);
 }

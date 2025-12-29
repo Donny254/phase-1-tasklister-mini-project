@@ -1,24 +1,18 @@
-const form = document.querySelector('#create-task-form');
-const taskList = document.querySelector('#task');
-
-
-document.addEventListener("DOMContentLoaded", (event) => {
-  event.preventDefault();
-
-
-  const input = document.querySelector('#new-task-description');
-  const task = input.value.trim();
-
-
-  if (task !== '') {
-    buildToDoList(task);
-    input.value = '';
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("create-task-form");
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const taskDescription = document.getElementById("new-task-description").value;
+    if (taskDescription) {  // Optional: skip empty inputs
+      buildToDo(taskDescription);
+      form.reset();  // Clear the input
+    }
+  });
 });
 
-
-function buildToDoList(task) {
-  const li = document.createElement('li');
-  li.textContent = task;
+function buildToDo(todo) {
+  const li = document.createElement("li");
+  li.textContent = todo;
+  const taskList = document.getElementById("tasks");  // Correct selector
   taskList.appendChild(li);
 }
